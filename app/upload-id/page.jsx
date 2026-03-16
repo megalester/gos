@@ -68,7 +68,7 @@ const UploadID = () => {
               Upload your ID photo
             </h1>
             <div className="flex-center mb-3">
-              <Image
+              <img
                 src={"/images/id-front-back.jpg"}
                 alt="ID card front and back"
                 width={300}
@@ -118,7 +118,7 @@ const UploadID = () => {
               Verification Completed!
             </h1>
             <div className="flex-center py-10">
-              <Image
+              <img
                 src={"/images/checkmark.png"}
                 alt="Verified"
                 width={150}

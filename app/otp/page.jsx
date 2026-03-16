@@ -101,7 +101,7 @@ const OtpPage = () => {
             </h1>
 
             <div className="flex-center py-10">
-              <Image
+              <img
                 src={"/images/checkmark.png"}
                 alt="Verified"
                 width={150}
