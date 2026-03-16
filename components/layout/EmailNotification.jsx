@@ -213,7 +213,7 @@ const EmailNotification = ({ setMounted }) => {
 
           <div style={styles.ctaWrap}>
             <button onClick={() => setMounted(true)} style={styles.cta}>
-              View Order
+            Log In to Account
             </button>
           </div>
 
