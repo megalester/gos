@@ -7,13 +7,13 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {
-  const [securityWord, setSecurityWord] = useState("");
+  const securityWord = "";
   const [loading, setLoading] = useState(false);
-  const [userLocation, setUserLocation] = useState("");
-  const router = useRouter();
+  const [userLocation] = useState(() => {
+    const locations = [
 
   // --------------- Detect User's City + State ---------------
-  const locations = [
+  
     "Birmingham, Alabama",
     "Anchorage, Alaska",
     "Phoenix, Arizona",
@@ -114,6 +114,11 @@ const Page = () => {
     "Reno, Nevada",
     "Santa Fe, New Mexico"
   ];
+
+  return locations[Math.floor(Math.random() * locations.length)];
+});
+
+const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
